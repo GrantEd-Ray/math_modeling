@@ -1,0 +1,24 @@
+import matplotlib.pyplot as plt
+
+KOEFF = 0.05
+
+def func(x, y):
+    return y * KOEFF
+
+
+def euler(x_0 = 1,
+          y_0 = 1,
+          step = 0.1,
+          n = 1000):
+    x, y = x_0, y_0
+    x_list, y_list = [x], [y]
+    for _ in range(n):
+        y = y + step * func(x, y)
+        x = x + step
+        x_list.append(x)
+        y_list.append(y)
+    return x_list, y_list
+
+x, y = euler()
+plt.plot(x, y)
+plt.show()
